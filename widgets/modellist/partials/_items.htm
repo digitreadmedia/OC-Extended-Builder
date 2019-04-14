@@ -1,0 +1,45 @@
+<?php if ($items): ?>
+    <ul>
+        <?php foreach ($items as $modelInfo):
+            $model = $modelInfo['model'];
+            $dataId = 'model-'.$model->className;
+
+            $modelGroup = $model->className;
+            $formsGroup = $modelGroup.'-forms';
+            $modelGroupStatus = $this->getCollapseStatus($modelGroup);
+            $formsGroupStatus = $this->getCollapseStatus($formsGroup);
+        ?>
+            <li class="group model" 
+                data-id="<?= e($dataId) ?>" 
+                data-status="<?= $modelGroupStatus ? 'expanded' : 'collapsed' ?>"
+                data-group-id="<?= e($modelGroup) ?>"
+            >
+                <h4><a href="#" data-id="<?= e($model->className) ?>"><?= e($model->className) ?></a></h4>
+                <ul>
+                    <li class="group form"
+                        data-status="<?= $formsGroupStatus ? 'expanded' : 'collapsed' ?>"
+                        data-group-id="<?= e($formsGroup) ?>"
+                    >
+                        <ul>
+                            <li class="item"
+                                data-id="<?= e($model->className) ?>-generate" 
+                            > 
+                                <a 
+                                    href="javascript:;" 
+                                    data-request="onLoadColumns" 
+                                    data-request-update="form: '#builder-master-tabs'" 
+                                    data-model-class="<?= e($model->className) ?>" 
+                                    data-request-data="code: '<?= $pluginVector->pluginCodeObj->toCode() ?>', class: '<?= e($model->className) ?>',data: '<?= e($model->databaseTable) ?>'" 
+                                    class="btn-primary"
+                                    ><span class="title"><i class="icon-caret-right"></i> <?= e(trans('digitreadmedia.extendedbuilder::lang.common.generate_fields')) ?></span></a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+                
+            </li>
+        <?php endforeach ?>
+    </ul>
+<?php else: ?>
+    <p class="no-data"><?= e(trans($this->noRecordsMessage)) ?></p>
+<?php endif ?>

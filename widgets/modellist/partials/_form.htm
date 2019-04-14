@@ -1,0 +1,72 @@
+<div class="tab-content flex-layout-item stretch relative">
+    <div style="width:100%; height:100%; background: #ffffff; padding:30px; position:relative; z-index:10;" id="fieldGenerator">
+        <h2><?= e(trans('digitreadmedia.extendedbuilder::lang.common.generate_fields')) ?>: <?= $class ?></h2><hr/>
+    
+        <form data-request="onGenerateForm" data-request-redirect="<?= Backend::url('digitreadmedia/extendedbuilder') ?>" id="generate-<?= $class ?>">
+            <input type="hidden" value="<?= $code ?>" name="data[code]" />
+            <input type="hidden" value="<?= $class ?>" name="data[class]" />
+            <div class="row">
+                <div class="col-12 col-md-3"><label><?= e(trans('digitreadmedia.extendedbuilder::lang.common.form_name')) ?>:</label></div>
+                <div class="col-12 col-md-9">
+                    <input type="text" size="20" name="data[formname]" placeholder="fields" />.yaml<br/>
+                    <p><?= e(trans('digitreadmedia.extendedbuilder::lang.common.form_name_description')) ?></p>
+                </div>
+            </div>
+            <h4><?= e(trans('digitreadmedia.extendedbuilder::lang.common.list_fields')) ?></h4><hr/>
+            <?php foreach($table as $result) : ?>        
+            <div class="row">
+                <div class="col-12 col-md-3"><label><?= strtoupper($result->Field) ?></label></div>
+                <div class="col-12 col-md-3"><label><?= e(trans('digitreadmedia.extendedbuilder::lang.common.field_type')) ?>:</label> 
+                    <select name="type[<?= $result->Field ?>]" class="fieldgen">
+                        <option value="">---<?= e(trans('digitreadmedia.extendedbuilder::lang.common.skip')) ?>---</option>
+                        <option value="text">Text</option>
+                        <option value="number">Number</option>
+                        <option value="password">Password</option>
+                        <option value="textarea">Text Area</option>
+                        <option value="dropdown">Dropdown List</option>
+                        <option value="radio">Radio List</option>
+                        <option value="balloon-selector">Balloon Selector</option>
+                        <option value="checkbox">Checkbox</option>
+                        <option value="checkboxlist">Checkbox List</option>
+                        <option value="switch">Switch</option>
+                        <option value="codeeditor">Code Editor</option>
+                        <option value="colorpicker">Color Picker</option>
+                        <option value="datepicker">Date Picker</option>
+                        <option value="recordfinder">Record Finder</option>
+                        <option value="mediafinder">Media Finder</option>
+                        <option value="relation">Relation</option>
+                        <option value="repeater">Repeater</option>
+                        <option value="richeditor">Rich Editor</option>
+                        <option value="markdown">Markdown Editor</option>
+                        <option value="taglist">Tag List</option>
+                        <option value="nestedform">Nested Form</option>
+                    </select>
+                </div>
+                <div class="col-12 col-md-6">
+                    <div class="row">
+                        <div class="col-3 col-md-3"><label><?= e(trans('digitreadmedia.extendedbuilder::lang.common.add_tab')) ?></label><br/></div>
+                        <div class="col-9 col-md-9"><input type="checkbox" name="tabs[<?= $result->Field ?>]" value="1" /><br/></div></div>
+                    <div class="row">
+                        <div class="col-12 col-md-3"><label data-trigger-condition="checked" data-trigger='[name="tabs[<?= $result->Field ?>]"]' data-trigger-action="show"><?= e(trans('digitreadmedia.extendedbuilder::lang.common.tab_order')) ?></label><br/></div>
+                        <div class="col-12 col-md-9"><input data-trigger-condition="checked" data-trigger='[name="tabs[<?= $result->Field ?>]"]' data-trigger-action="show" type="text" name="order[<?= $result->Field ?>]" size="2" value="0" /><br/></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12">&nbsp;</div>
+                    </div>                
+                    <div class="row">
+                        <div class="col-12 col-md-3"><label data-trigger-condition="value[recordfinder]" data-trigger='[name="type[<?= $result->Field ?>]"]' data-trigger-action="show">List:</label><br/></div>
+                        <div class="col-12 col-md-9"><input type="text" data-trigger-condition="value[recordfinder]" data-trigger='[name="type[<?= $result->Field ?>]"]' data-trigger-action="show" name="additional[<?= $result->Field ?>]"  style="width:99%" /><br/><i data-trigger-condition="value[recordfinder]" data-trigger='[name="type[<?= $result->Field ?>]"]' data-trigger-action="show">Eg: ~/plugins/rainlab/user/models/user/columns.yaml</i></i></div>
+                    </div>   
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12"><hr data-trigger-condition="value[recordfinder]" data-trigger='[name="type[<?= $result->Field ?>]"]' data-trigger-action="show" /><br/></div>
+            </div>
+            <?php endforeach; ?>   
+            <div class="row">
+                <div class="col-12 align-center"><input type="submit" class="btn btn-primary align-center" value="<?= e(trans('digitreadmedia.extendedbuilder::lang.common.generate')) ?>" /></div>
+            </div>
+        </form>
+    
+    </div>
+</div>

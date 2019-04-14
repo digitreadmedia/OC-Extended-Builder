@@ -1,0 +1,6 @@
+plugin:
+    name: 'digitreadmedia.extendedbuilder::lang.plugin.name'
+    description: 'digitreadmedia.extendedbuilder::lang.plugin.description'
+    author: 'Digitread Media'
+    icon: oc-icon-adjust
+    homepage: 'http://www.digitread.co.za/oc-extendedbuilder'

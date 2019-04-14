@@ -1,0 +1,10 @@
+#fieldGenerator input, 
+#fieldGenerator select,
+.fieldgen {border: 1px solid #ececec !Important; padding: 8px !Important; font-size: 1.5rem !Important;}
+#fieldGenerator label {font-weight: bold;}
+#fieldGenerator p {font-size: 1rem; font-weight: bold; color: #d35400;}
+#fieldGenerator .align-center {text-align:center !Important;}
+#fieldGenerator h4 {line-height: 1.5;}
+.ext-builder span.title {font-weight: bold !Important;}
+.ext-builder .group a.btn-primary span.title {color: #ffffff !Important;}
+.ext-builder .group a.btn-primary:hover span.title {color: #333 !Important;}
