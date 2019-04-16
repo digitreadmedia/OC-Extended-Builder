@@ -1,6 +1,8 @@
 # OC Extended Builder Plugin
 Form fields auto-generator that extends the October CMS RainLab Builder plugin.
 
+**Install this plugin from the October CMS Marketplace:** https://octobercms.com/plugin/digitreadmedia-extendedbuilder
+
 ## About This Plugin
 This plugin extends the October CMS RainLab Builder plugin. Save time with form creation by auto-generating a basic YAML form with fields batch-generated from the model table columns. Thereafter you can configure and customize the form using RainLab Builder.
 
